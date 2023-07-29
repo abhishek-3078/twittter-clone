@@ -1,6 +1,7 @@
 'use server'
 import { SupabaseClient,createClient } from '@supabase/supabase-js'
 import { Database } from '../supabase.types'
+import { pool } from '../db'
 // import supabaseServer from '../supabase'
 import { randomUUID } from 'crypto'
 

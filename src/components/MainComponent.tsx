@@ -14,7 +14,10 @@ const MainComponent = async () => {
    
   const supabaseServer=await createServerComponentClient({cookies})
   const {data:userData,error:userError}=await supabaseServer.auth.getUser()
-  const res=await GetTweets()
+
+  const res=await GetTweets(userData.user?.id)
+  const userId=userData.user?.id
+  console.log(res,"accha")
 
   return (
     <main className="flex w-full md:w-[625px] h-full min-h-screen flex-col  border-l-[0.5px] border-r-[0.5px] border-gray-500">
@@ -22,7 +25,7 @@ const MainComponent = async () => {
 
   Home
   </h1>
-    <ComposeTweet/>
+    <ComposeTweet userId={userId}/>
     <div className="flex  flex-col">
       {res?.error && <div>Something wrong with the server</div>}
 

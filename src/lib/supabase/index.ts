@@ -15,7 +15,7 @@ export async function getSupabaseClient(): Promise<SupabaseClient> {
     
         supabase = createClient(supabaseURL as string, supabaseSecret as string,{
             auth:{
-                persistSession:false
+                persistSession:true
             }
         });
       }

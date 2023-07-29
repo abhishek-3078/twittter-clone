@@ -4,9 +4,6 @@ import { randomUUID } from "crypto"
 import { getSupabaseClient } from "./"
 import { revalidatePath } from "next/cache"
 
-// const Url=process.env.NEXT_PUBLIC_SUPABASE_URL
-// const Secret=process.env.SUPABASE_SECRET_KEY
-
 export const likeTweet=async(
     {tweetId,userId}:{
         tweetId:string,

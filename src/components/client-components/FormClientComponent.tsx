@@ -4,20 +4,28 @@ import { PostgrestError } from '@supabase/supabase-js';
 import React ,{useRef} from 'react'
 import { Toaster,toast } from 'sonner';
 type FormClientComponentProps={
-  action:(formData: FormData) => Promise<{
-    data: null;
-    error: PostgrestError | null;
-} | undefined>
+  
+action(formData: FormData): Promise<{
+  err: {
+      message: string;
+  };
+  data?: undefined;
+  error?: undefined;
+} | {
+  data: null;
+  error: PostgrestError | null;
+  err?: undefined;
+}>
 }
 
-const FormClientComponent = ({action}:any) => {
+const FormClientComponent = ({action}:FormClientComponentProps) => {
 
   const handleSubmit=async(data:any)=>{
     try{
       const res=await action(data)
       console.log(res)
-      if(res?.error){
-        return toast.error(res.error.message)
+      if(res?.err){
+        return toast.error(res.err.message)
       }
       toast.success("Tweet sent successfully")
       resetRef.current?.click()

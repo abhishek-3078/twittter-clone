@@ -61,12 +61,12 @@ export default function Login() {
     // })
     setLoading(true)
     const {data:d,error:e}=await supabase.from("profiles").select().eq('username',username.trim())
-    if(d && d?.length>0){
-      console.log(d)
-      alert("username already exist")
-      return
+    // if(d && d?.length>0){
+    //   console.log(d)
+    //   alert("username already exist")
+    //   return
 
-    }
+    // }
     const { data, error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
       options: {
